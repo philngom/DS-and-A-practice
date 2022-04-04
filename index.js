@@ -21,6 +21,8 @@ console.log(oddishOrEvenish(121));
 function anagrams(wordOne, wordTwo) {
 
   function countWord(word) {
+    if (wordOne.length !== wordTwo.length) return false;
+
     const countedWord = word.split('').reduce((acc, curr) => {
       if (!acc[curr]) {
         acc[curr] = 1;
@@ -34,7 +36,6 @@ function anagrams(wordOne, wordTwo) {
   const wordOneCount = countWord(wordOne);
   const wordTwoCount = countWord(wordTwo);
 
-  if (wordOne.length !== wordTwo.length) return false;
   for (const key in wordOneCount) {
     if (wordOneCount[key] !== wordTwoCount[key]) {
       return false;
