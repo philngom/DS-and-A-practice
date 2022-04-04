@@ -17,3 +17,32 @@ function oddishOrEvenish(number) {
 }
 
 console.log(oddishOrEvenish(121));
+
+function anagrams(wordOne, wordTwo) {
+
+  function countWord(word) {
+    const countedWord = word.split('').reduce((acc, curr) => {
+      if (!acc[curr]) {
+        acc[curr] = 1;
+      } else {
+        acc[curr]++;
+      }
+      return acc;
+    }, {});
+    return countedWord;
+  }
+  const wordOneCount = countWord(wordOne);
+  const wordTwoCount = countWord(wordTwo);
+
+  if (wordOne.length !== wordTwo.length) return false;
+  for (const key in wordOneCount) {
+    if (wordOneCount[key] !== wordTwoCount[key]) {
+      return false;
+    }
+  }
+  return true;
+
+}
+
+console.log(anagrams('superintended', 'unpredestined'));
+console.log(anagrams('pictorialness', 'documentarily'));
